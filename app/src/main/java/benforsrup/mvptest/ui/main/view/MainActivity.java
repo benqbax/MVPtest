@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MainPresenter mMainPresenter;
     private Button mLogoutButton;
     private TextView mUserText;
+    private String test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
