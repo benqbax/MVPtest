@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "418991368026",
+    "firebase_url": "https://mvp-test-app.firebaseio.com",
+    "project_id": "mvp-test-app",
+    "storage_bucket": "mvp-test-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418991368026:android:b7822d0d45209e7d",
+        "android_client_info": {
+          "package_name": "benforsrup.mvptest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418991368026-klh69acpk1nsgm9f4a35ldpo886k2lcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "benforsrup.mvptest",
+            "certificate_hash": "3cccb007d8668ceba3219bfa4fdebf2892f98b8f"
+          }
+        },
+        {
+          "client_id": "418991368026-jvb296aku4kif5mjiltgoba68op1irg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFWxaycFH9i5QuTm2j5ndQYCvUqazVHYQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418991368026-jvb296aku4kif5mjiltgoba68op1irg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
