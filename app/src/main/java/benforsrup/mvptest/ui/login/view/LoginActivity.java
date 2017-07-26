@@ -2,11 +2,14 @@ package benforsrup.mvptest.ui.login.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     public void logTheUserIn(FirebaseUser user) {
         Toast.makeText(this, user + " logged in with the uid:" + user.getUid(), Toast.LENGTH_SHORT).show();
         setResult(Activity.RESULT_OK);
+        hideSoftKeyboard(this);
         finish();
     }
 
@@ -71,6 +75,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         if(view == mSignUp){
             Log.d(TAG, "onClick: Sign up!");
             Intent intent = new Intent(this, SignUpActivity.class);
+
+
+//
+
+
+
             startActivityForResult(intent, SIGN_UP_REQUEST);
         }
 
@@ -89,4 +99,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        return;
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
 }

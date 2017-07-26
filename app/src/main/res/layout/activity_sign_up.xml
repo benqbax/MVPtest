@@ -40,6 +40,7 @@
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"
+                      android:transitionName="email_transition"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:hint="Email" />
@@ -52,6 +53,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/input_password"
+                      android:transitionName="password_transition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:windowSoftInputMode="stateHidden"
             android:name=".ui.main.view.MainActivity"
             android:theme="@style/AppTheme.Dark">
             <intent-filter>
@@ -21,9 +22,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:windowSoftInputMode="stateHidden"
             android:name=".ui.login.view.LoginActivity"
             android:theme="@style/AppTheme.Dark"></activity>
-        <activity android:name=".ui.registration.view.SignUpActivity"></activity>
+        <activity  android:windowSoftInputMode="stateHidden"
+                   android:theme="@style/AppTheme.Dark" android:name=".ui.registration.view.SignUpActivity"></activity>
     </application>
 
 </manifest>
