@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "418991368026-5ca98i38hecia5v84h6713scippcucsa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "benforsrup.mvptest",
+            "certificate_hash": "cf8f5c5dfdef362954ad4bbbca19377ca8c1b9cb"
+          }
+        },
+        {
           "client_id": "418991368026-klh69acpk1nsgm9f4a35ldpo886k2lcn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

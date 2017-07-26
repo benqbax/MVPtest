@@ -39,8 +39,8 @@ public class FirebaseLoginPresenterImpl implements FirebaseLoginPresenter {
     }
 
     @Override
-    public void onFailure() {
-        mLoginView.onFailure();
+    public void onFailure(String message) {
+        mLoginView.onFailure(message);
     }
 
     @Override

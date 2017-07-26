@@ -7,5 +7,5 @@ package benforsrup.mvptest.ui.login.view;
 public interface LoginView {
 
     void logTheUserIn(String username, String uid);
-    void onFailure();
+    void onFailure(String message);
 }
