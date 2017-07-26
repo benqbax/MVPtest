@@ -12,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import benforsrup.mvptest.ui.main.presenter.MainPresenter;
-import benforsrup.mvptest.ui.util.AuthHelper;
 
 
 /**

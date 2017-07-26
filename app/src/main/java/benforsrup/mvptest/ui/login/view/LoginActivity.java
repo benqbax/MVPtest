@@ -2,6 +2,7 @@ package benforsrup.mvptest.ui.login.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     @Override
     public void logTheUserIn(FirebaseUser user) {
         Toast.makeText(this, user + " logged in with the uid:" + user.getUid(), Toast.LENGTH_SHORT).show();
+        setResult(Activity.RESULT_OK);
         finish();
     }
 
@@ -81,6 +83,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         switch (requestCode){
             case SIGN_UP_REQUEST:
                 if(resultCode == Activity.RESULT_OK){
+                    setResult(Activity.RESULT_OK);
                     finish();
                 }
                 break;

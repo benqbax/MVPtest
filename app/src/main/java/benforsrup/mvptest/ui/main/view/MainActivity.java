@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mLogoutButton;
     private TextView mUserText;
 
+    static final int LOGIN_REQUEST_CODE = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onSignedOut() {
         Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,LOGIN_REQUEST_CODE);
        // Toast.makeText(this, "You are not logged in", Toast.LENGTH_SHORT).show();
     }
 
@@ -71,4 +73,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainPresenter.checkIfUserHasLoggedIn();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case LOGIN_REQUEST_CODE:
+                if(resultCode == RESULT_OK){
+                    checkStatus();
+
+                }
+                break;
+        }
+    }
 }
