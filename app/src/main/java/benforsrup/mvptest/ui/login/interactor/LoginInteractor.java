@@ -23,9 +23,8 @@ import benforsrup.mvptest.ui.login.view.LoginActivity;
 
 public class LoginInteractor implements LInteractor {
     private static final String TAG = "LoginInteractor";
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private final FirebaseLoginPresenter presenter;
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public LoginInteractor(FirebaseLoginPresenter pre) {
         this.presenter = pre;
@@ -42,7 +41,9 @@ public class LoginInteractor implements LInteractor {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser user = mAuth.getCurrentUser();
                             Log.d(TAG, "onComplete: Logging in complete");
+                            presenter.onSuccess(user);
                         }
                         else {
                             Log.d(TAG, "onComplete: failed");
@@ -80,50 +81,11 @@ public class LoginInteractor implements LInteractor {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Log.d(TAG, "onComplete: Succesfully created user");
-                            presenter.onCreateUserSuccess();
                         }
                     }
                 });
     }
 
-
-    @Override
-    public void register() {
-        mAuth.addAuthStateListener(mAuthStateListener);
-        Log.d(TAG, "register: registered the listener");
-    }
-
-    @Override
-    public void unregister() {
-        if(mAuthStateListener!=null){
-            mAuth.removeAuthStateListener(mAuthStateListener);
-            Log.d(TAG, "unregister: unregistered the listener");
-        }
-    }
-
-    @Override
-    public void initilizeAuth() {
-        mAuth = FirebaseAuth.getInstance();
-
-        //auth state listener
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    presenter.onSuccess(user.getEmail(), user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
-
-        Log.d(TAG, "initilizeAuth: Initilized the authenticator " + mAuth.toString());
-    }
 
 
 

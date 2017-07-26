@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public interface MainView {
-    void logtheUserIn(FirebaseUser user);
+    void userIsLoggedIn(FirebaseUser user);
     void onSignedOut();
     void checkStatus();
 }

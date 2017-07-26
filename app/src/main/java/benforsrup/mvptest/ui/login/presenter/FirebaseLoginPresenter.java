@@ -1,18 +1,16 @@
 package benforsrup.mvptest.ui.login.presenter;
 
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by benforsrup on 2017-07-25.
  */
 
 public interface FirebaseLoginPresenter {
 
-    void registerListener();
-    void unregisterListener();
-    void initilizeAuth();
     void receiveUserLogin(String email, String password);
     void onFailure(String message);
-    void onSuccess(String user, String uid);
+    void onSuccess(FirebaseUser user);
     void attemptToCreateUser(String email, String password);
-    void onCreateUserSuccess();
 
 }

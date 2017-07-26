@@ -9,8 +9,5 @@ import java.util.Map;
 public interface LInteractor {
 
     void attemptToLogIn(String email, String password);
-    void register();
-    void unregister();
-    void initilizeAuth();
     void createUser(String email, String password);
 }

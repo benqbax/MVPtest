@@ -23,7 +23,7 @@
         <activity
             android:name=".ui.login.view.LoginActivity"
             android:theme="@style/AppTheme.Dark"></activity>
-        <activity android:name=".ui.login.view.SignUpActivity"></activity>
+        <activity android:name=".ui.registration.view.SignUpActivity"></activity>
     </application>
 
 </manifest>

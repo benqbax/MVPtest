@@ -26,22 +26,12 @@ public class MainActivityPresenterImpl implements MainPresenter {
 
     @Override
     public void onLoggedIn(FirebaseUser user) {
-        mainView.logtheUserIn(user);
+        mainView.userIsLoggedIn(user);
     }
 
     @Override
     public void onSignedOut() {
         mainView.onSignedOut();
-    }
-
-    @Override
-    public void registerListener() {
-        interactor.register();
-    }
-
-    @Override
-    public void unregisterListener() {
-        interactor.unregister();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package benforsrup.mvptest.ui.login.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,11 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import benforsrup.mvptest.R;
 import benforsrup.mvptest.ui.login.presenter.FirebaseLoginPresenterImpl;
+import benforsrup.mvptest.ui.registration.view.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener{
     private static final String TAG = "LoginActivity";
+
+
+    static final int SIGN_UP_REQUEST = 1;
 
     private EditText mEmailEditText;
     private EditText mPasswordEditText;
@@ -27,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         createUI();
+        mPresenter = new FirebaseLoginPresenterImpl(this);
     }
 
     private void createUI() {
@@ -36,14 +44,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         mSignUp.setOnClickListener(this);
         mLoginButton = (Button) findViewById(R.id.btn_login);
         mLoginButton.setOnClickListener(this);
-        mPresenter = new FirebaseLoginPresenterImpl(this, null);
-        mPresenter.initilizeAuth();
+
     }
 
 
     @Override
-    public void logTheUserIn(String username, String uid) {
-        Toast.makeText(this, username + " logged in with the uid:" + uid, Toast.LENGTH_SHORT).show();
+    public void logTheUserIn(FirebaseUser user) {
+        Toast.makeText(this, user + " logged in with the uid:" + user.getUid(), Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -62,20 +69,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         if(view == mSignUp){
             Log.d(TAG, "onClick: Sign up!");
             Intent intent = new Intent(this, SignUpActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, SIGN_UP_REQUEST);
         }
 
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mPresenter.registerListener();
-    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mPresenter.unregisterListener();
+        switch (requestCode){
+            case SIGN_UP_REQUEST:
+                if(resultCode == Activity.RESULT_OK){
+                    finish();
+                }
+                break;
+        }
     }
 }

@@ -10,8 +10,6 @@ public interface MainPresenter {
     void checkIfUserHasLoggedIn();
     void onLoggedIn(FirebaseUser user);
     void onSignedOut();
-    void registerListener();
-    void unregisterListener();
     void initilizeAuth();
     void signUserOut();
 }

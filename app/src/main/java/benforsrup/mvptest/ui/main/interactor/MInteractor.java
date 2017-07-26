@@ -7,8 +7,6 @@ package benforsrup.mvptest.ui.main.interactor;
 
 public interface MInteractor {
     void checkIfUserHasLoggedIn();
-    void register();
-    void unregister();
     void initilizeAuth();
     void signOut();
 }
