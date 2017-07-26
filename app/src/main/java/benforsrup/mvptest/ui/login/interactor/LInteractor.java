@@ -12,4 +12,5 @@ public interface LInteractor {
     void register();
     void unregister();
     void initilizeAuth();
+    void createUser(String email, String password);
 }

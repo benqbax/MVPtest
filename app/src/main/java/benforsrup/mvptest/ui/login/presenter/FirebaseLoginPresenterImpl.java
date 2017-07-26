@@ -2,6 +2,7 @@ package benforsrup.mvptest.ui.login.presenter;
 
 import benforsrup.mvptest.ui.login.interactor.LoginInteractor;
 import benforsrup.mvptest.ui.login.view.LoginView;
+import benforsrup.mvptest.ui.login.view.SignUpView;
 
 /**
  * Created by benforsrup on 2017-07-25.
@@ -10,12 +11,17 @@ import benforsrup.mvptest.ui.login.view.LoginView;
 public class FirebaseLoginPresenterImpl implements FirebaseLoginPresenter {
 
     private final LoginView mLoginView;
+    private final SignUpView mSignUpView;
     private final LoginInteractor mInteractor;
 
-    public FirebaseLoginPresenterImpl(LoginView view) {
-        this.mLoginView = view;
+    public FirebaseLoginPresenterImpl(LoginView view, SignUpView signUpView) {
         mInteractor = new LoginInteractor(this);
+        this.mSignUpView = signUpView;
+        this.mLoginView = view;
+
+
     }
+
 
 
     @Override
@@ -47,4 +53,16 @@ public class FirebaseLoginPresenterImpl implements FirebaseLoginPresenter {
     public void onSuccess(String user, String uid) {
         mLoginView.logTheUserIn(user, uid);
     }
+
+    @Override
+    public void attemptToCreateUser(String email, String password) {
+        mInteractor.createUser(email, password);
+    }
+
+    @Override
+    public void onCreateUserSuccess() {
+        mSignUpView.onSuccessCreatedUser();
+    }
+
+
 }

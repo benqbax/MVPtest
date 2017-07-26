@@ -72,6 +72,20 @@ public class LoginInteractor implements LInteractor {
 
     }
 
+    @Override
+    public void createUser(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "onComplete: Succesfully created user");
+                            presenter.onCreateUserSuccess();
+                        }
+                    }
+                });
+    }
+
 
     @Override
     public void register() {
@@ -108,9 +122,10 @@ public class LoginInteractor implements LInteractor {
             }
         };
 
-
         Log.d(TAG, "initilizeAuth: Initilized the authenticator " + mAuth.toString());
     }
+
+
 
 
 }
